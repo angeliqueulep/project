@@ -2,12 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index Page</title>
-    <link rel="stylesheet" href="output.css">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-<h1 class="text-3xl text-teal-700">Hello Welcome</h1>
-<p class="text-purple-700">I am using tailwind</p>
-
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white dark:bg-slate-800 p-8 rounded shadow-md w-80">
+        <h2 class="text-2xl font-semibold mb-4">Login</h2>
+        <form class="flex flex-col gap-4">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username / Email</label>
+                <input id="username" type="text" placeholder="Enter your username" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input id="password" type="password" placeholder="Enter your password" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800 focus:outline-none focus:bg-blue-600">Login</button>
+            <div class="text-center">
+                <span class="text-gray-600">Don't have an account?</span>
+                <a href="#" class="text-blue-500 hover:underline">Register</a>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

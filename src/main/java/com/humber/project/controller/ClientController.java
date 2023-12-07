@@ -17,14 +17,19 @@ public class ClientController {
         this.userService = userService;
     }
 
-    @PostMapping("/")
-    public String authenticateUser(@RequestParam String email, @RequestParam String password, HttpSession session) {
-        User user = userService.authenticateUser(email, password);
+    @GetMapping("/")
+    public String index(){
+        return("index");
+    }
 
-        if (user != null) {
+    @PostMapping("/")
+    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session) {
+        User user = userService.getUserByUsername(username,password);
+
+        if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("loggedUser", user);
 
-            if (user.isAdmin()) {
+            if ("on".equals(isAdmin)) {
                 session.setAttribute("isAdmin", true);
                 session.setAttribute("isUser", false);
             } else {

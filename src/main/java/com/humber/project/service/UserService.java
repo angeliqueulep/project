@@ -15,16 +15,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User authenticateUser(String email, String password) {
-        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+    public User getUserByUsername(String username, String password) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()){
             return null;
         }
 
-        User user = userRepository.findByEmail(email);
-
+        User user = userRepository.findByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             return user;
         }
-        return null; // Return null if authentication fails
+        return null;
     }
 }

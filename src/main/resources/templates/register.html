@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded shadow-md w-80">
+        <h2 class="text-2xl font-semibold mb-4">Register</h2>
+        <form>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input id="username" type="text" placeholder="Enter your username" class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input id="email" type="email" placeholder="Enter your email" class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input id="password" type="password" placeholder="Enter your password" class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="confirm-password" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+                <input id="confirm-password" type="password" placeholder="Confirm your password" class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Register</button>
+            <div class="text-center mt-4">
+                <span class="text-gray-600">Already have an account?</span>
+                <a href="/" class="text-blue-500 hover:underline">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

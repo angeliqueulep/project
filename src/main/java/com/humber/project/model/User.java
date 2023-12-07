@@ -2,6 +2,7 @@ package com.humber.project.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Data
@@ -12,4 +13,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    @Getter
+    private boolean admin;
+
 }

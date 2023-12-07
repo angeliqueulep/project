@@ -1557,3 +1557,4 @@ build/
 /node_modules/yaml/README.md
 /node_modules/yaml/util.js
 /node_modules/.package-lock.json
+/package-lock.json

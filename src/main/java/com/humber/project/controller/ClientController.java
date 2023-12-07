@@ -1,12 +1,15 @@
 package com.humber.project.controller;
 
+import ch.qos.logback.core.model.Model;
 import com.humber.project.model.User;
 import com.humber.project.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ClientController {
@@ -19,14 +22,13 @@ public class ClientController {
 
     @GetMapping("/")
     public String index(){
-        System.out.println("Hello");
         return("index");
     }
 
     @PostMapping("/")
-    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session) {
+    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session, RedirectAttributes redirectAttrs) {
         User user = userService.getUserByUsername(username,password);
-
+        System.out.println(username);
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("loggedUser", user);
 
@@ -40,7 +42,8 @@ public class ClientController {
 
             return "redirect:/success";
         } else {
-            return "redirect:/?error=Invalid credentials. Please try again.";
+            redirectAttrs.addFlashAttribute("error","Invalid login credentials. Please try again");
+            return "index";
         }
     }
     @GetMapping("/register")

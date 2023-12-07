@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
@@ -15,11 +15,11 @@
         <form class="flex flex-col gap-4" action="/" method="post">
             <div class="mb-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                <input id="username" type="text" placeholder="Enter your username" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+                <input id="username" type="text" name="username" placeholder="Enter your username" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                <input id="password" type="password" placeholder="Enter your password" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+                <input id="password" type="password" name="password" placeholder="Enter your password" class="placeholder:italic placeholder:text-slate-400 border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
                 <label for="admin" class="block text-gray-700 text-sm font-bold mb-2">

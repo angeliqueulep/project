@@ -17,4 +17,8 @@ public class MenuItemService {
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }
+
+    public void deleteMenuItem(Integer id) {
+        menuItemRepository.deleteById(id);
+    }
 }

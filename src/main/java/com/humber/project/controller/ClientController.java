@@ -19,6 +19,7 @@ public class ClientController {
 
     @GetMapping("/")
     public String index(){
+        System.out.println("Hello");
         return("index");
     }
 

@@ -61,6 +61,7 @@ public class ClientController {
         if (usersService.isUserExists(user.getUsername())) {
             result.rejectValue("username", "error.user", "Username already exists");
         }
+        System.out.println("test");
 
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);

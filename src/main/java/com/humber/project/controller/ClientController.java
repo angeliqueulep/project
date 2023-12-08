@@ -6,6 +6,7 @@ import com.humber.project.service.UsersService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,25 +53,29 @@ public class ClientController {
         }
     }
     @GetMapping("/register")
-    public String registerPage(){
+    public String registerPage(Model model)
+    {
+        Users user = new Users();
+        model.addAttribute("users", user);
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") Users user, BindingResult result, RedirectAttributes redirectAttributes) {
-        if (usersService.isUserExists(user.getUsername())) {
-            result.rejectValue("username", "error.user", "Username already exists");
+    public String registerUser(@ModelAttribute("users") Users user, BindingResult result, Model model) {
+
+        Users existingUser = usersService.isUserExists(user.getUsername());
+
+        if (existingUser != null && existingUser.getUsername() != null && !existingUser.getUsername().isEmpty()) {
+            result.rejectValue("username", null, "Username already exists");
         }
-        System.out.println("test");
 
         if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
-            redirectAttributes.addFlashAttribute("user", user);
+            model.addAttribute("users", user);
             return "redirect:/register";
         }
 
+        System.out.println(usersService.getAllUsers());
         usersService.saveUser(user);
-        redirectAttributes.addFlashAttribute("successMessage", "Registration successful!");
-        return "redirect:/";
+        return "redirect:/register?success";
     }
 }

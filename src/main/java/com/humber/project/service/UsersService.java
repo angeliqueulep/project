@@ -30,12 +30,15 @@ public class UsersService {
     }
 
     public void saveUser(Users user) {
-        usersRepository.save(user);
+        Users newUser = new Users();
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(user.getPassword());
+        newUser.setRole(user.getRole());
+        usersRepository.save(newUser);
     }
 
-    public boolean isUserExists(String username) {
-        Users existingUser = usersRepository.findByUsername(username);
-        return existingUser != null;
+    public Users isUserExists(String username) {
+        return usersRepository.findByUsername(username);
     }
 
     public List<Users> getAllUsers(){

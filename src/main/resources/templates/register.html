@@ -9,14 +9,30 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="bg-white p-8 rounded shadow-md w-80">
         <h2 class="text-2xl font-semibold mb-4">Register</h2>
-        <form method="post" action="/register">
+        <div th:if="${param.success}">
+            <div class="alert alert-info text-green-700 px-4 py-3">
+                You have successfully registered our app!
+            </div>
+            <br>
+        </div>
+        <form method="post" action="/register" th:object="${users}" th:action="@{/register}">
             <div class="mb-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
-                <input id="username" name="username" type="text" placeholder="Enter your username"  class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+                <input id="username"
+                       name="username"
+                       type="text"
+                       placeholder="Enter your username"
+                       class="form-control border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
             </div>
+<!--            <p th:errors = "*{username}" class="text-danger"-->
+<!--               th:if="${#fields.hasErrors('username')}"></p>-->
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                <input id="password" type="password" placeholder="Enter your password" name="password" class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
+                <input id="password"
+                       type="password"
+                       placeholder="Enter your password"
+                       name="password"
+                       class="border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
                 <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>

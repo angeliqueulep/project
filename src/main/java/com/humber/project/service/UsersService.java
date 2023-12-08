@@ -5,6 +5,8 @@ import com.humber.project.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsersService {
 
@@ -25,5 +27,18 @@ public class UsersService {
             return users;
         }
         return null;
+    }
+
+    public void saveUser(Users user) {
+        usersRepository.save(user);
+    }
+
+    public boolean isUserExists(String username) {
+        Users existingUser = usersRepository.findByUsername(username);
+        return existingUser != null;
+    }
+
+    public List<Users> getAllUsers(){
+        return usersRepository.findAll();
     }
 }

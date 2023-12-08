@@ -66,12 +66,13 @@ public class ClientController {
         Users existingUser = usersService.isUserExists(user.getUsername());
 
         if (existingUser != null && existingUser.getUsername() != null && !existingUser.getUsername().isEmpty()) {
+            System.out.println("Error");
             result.rejectValue("username", null, "Username already exists");
         }
 
         if (result.hasErrors()) {
             model.addAttribute("users", user);
-            return "redirect:/register";
+            return "/register";
         }
 
         System.out.println(usersService.getAllUsers());

@@ -20,12 +20,14 @@
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
                 <input id="username"
                        name="username"
+                       th:field="*{username}"
                        type="text"
                        placeholder="Enter your username"
                        class="form-control border rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500">
             </div>
-<!--            <p th:errors = "*{username}" class="text-danger"-->
-<!--               th:if="${#fields.hasErrors('username')}"></p>-->
+            <p th:errors = "*{username}" class="text-danger text-red-700"
+               th:if="${#fields.hasErrors('username')}"></p>
+            <br>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
                 <input id="password"

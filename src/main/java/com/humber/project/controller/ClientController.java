@@ -1,39 +1,34 @@
 package com.humber.project.controller;
 
-import com.humber.project.model.Users;
-import com.humber.project.repository.UsersRepository;
-import com.humber.project.service.UsersService;
+import com.humber.project.model.User;
+import com.humber.project.service.UserService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ClientController {
 
-    private final UsersService usersService;
+    private final UserService userService;
 
-    public ClientController(UsersService usersService) {
-        this.usersService = usersService;
+    public ClientController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/")
     public String index(){
+        System.out.println("Hello");
         return("index");
     }
 
-    @Autowired
-    private UsersRepository usersRepository;
     @PostMapping("/")
-    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session, RedirectAttributes redirectAttrs) {
-        UsersService usersService = new UsersService(usersRepository);
-        Users users = usersService.getUserByUsername(username, password);
+    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session) {
+        User user = userService.getUserByUsername(username,password);
 
-        if (users != null && users.getPassword().equals(password)) {
-            session.setAttribute("loggedUser", users);
+        if (user != null && user.getPassword().equals(password)) {
+            session.setAttribute("loggedUser", user);
 
             if ("on".equals(isAdmin)) {
                 session.setAttribute("isAdmin", true);
@@ -43,10 +38,9 @@ public class ClientController {
                 session.setAttribute("isUser", true);
             }
 
-            return "redirect:/home";
+            return "redirect:/success";
         } else {
-            redirectAttrs.addFlashAttribute("error", "Invalid login credentials. Please try again");
-            return "index";
+            return "redirect:/?error=Invalid credentials. Please try again.";
         }
     }
     @GetMapping("/register")

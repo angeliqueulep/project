@@ -32,6 +32,13 @@ public class MenuItemController {
         return "redirect:/home";
     }
 
+    @GetMapping("/add")
+    public String addMenuItemForm(Model model) {
+        // Add attributes to the model if needed, or process any form data
+        return "add";
+    }
+
+
 }
 
 

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ClientController {
@@ -31,25 +30,23 @@ public class ClientController {
     @Autowired
     private UsersRepository usersRepository;
     @PostMapping("/")
-    public String authenticateUser(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String isAdmin, HttpSession session, RedirectAttributes redirectAttrs) {
+    public String authenticateUser(@ModelAttribute("loggedUser") @RequestParam String username, @RequestParam String password, HttpSession session) {
         UsersService usersService = new UsersService(usersRepository);
         Users users = usersService.getUserByUsername(username, password);
 
         if (users != null && users.getPassword().equals(password)) {
-            session.setAttribute("loggedUser", users);
+            String role = users.getRole(); // Fetch role from the retrieved user
 
-            if ("on".equals(isAdmin)) {
+            if ("admin".equals(role)) {
                 session.setAttribute("isAdmin", true);
-                session.setAttribute("isUser", false);
             } else {
-                session.setAttribute("isAdmin", false);
                 session.setAttribute("isUser", true);
             }
 
             return "redirect:/home";
         } else {
-            redirectAttrs.addFlashAttribute("error", "Invalid login credentials. Please try again");
-            return "index";
+            //redirectAttrs.addFlashAttribute("error", "Invalid login credentials. Please try again");
+            return "redirect:/?failed";
         }
     }
     @GetMapping("/register")

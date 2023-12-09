@@ -30,7 +30,14 @@
     </nav>
     <!-- User Section at the bottom -->
     <div class="absolute bottom-2 mb-7">
-        <div class="px-3 py-2 text-sm font-semibold text-gray-300">Welcome, <span th:text="${loggedUser}">User</span></div>
+        <div class="px-3 py-2 text-sm font-semibold text-gray-300">
+    <span th:if="${session.isAdmin}">
+        Welcome, Admin!
+    </span>
+            <span th:if="${session.isUser}">
+        Welcome, User!
+    </span>
+        </div>
         <a class="block pl-4 pr-36 py-2 text-sm font-semibold text-gray-300 rounded hover:bg-red-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/logout}">Logout</a>
     </div>
 </aside>

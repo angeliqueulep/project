@@ -44,6 +44,19 @@ public class MenuItemController {
         menuItemService.addMenuItem(menuItem);
         return "redirect:/home";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editMenuItemForm(@PathVariable Integer id, Model model) {
+        MenuItem menuItem = menuItemService.getMenuItemById(id);
+        model.addAttribute("menuItem", menuItem);
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String submitEditMenuItemForm(@ModelAttribute MenuItem menuItem, Model model) {
+        menuItemService.editMenuItem(menuItem);
+        return "redirect:/home";
+    }
 }
 
 

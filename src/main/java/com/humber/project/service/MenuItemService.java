@@ -26,4 +26,14 @@ public class MenuItemService {
         menuItemRepository.save(menuItem);
     }
 
+    public MenuItem getMenuItemById(Integer id) {
+        return menuItemRepository.findById(id).get();
+    }
+
+    public void editMenuItem(MenuItem menuItem) {
+        if (menuItem.getId() != null) {
+            menuItemRepository.save(menuItem);
+        }
+    }
+
 }

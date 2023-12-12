@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import com.humber.project.model.MenuItem;
 
 
 @Controller
@@ -34,11 +36,14 @@ public class MenuItemController {
 
     @GetMapping("/add")
     public String addMenuItemForm(Model model) {
-        // Add attributes to the model if needed, or process any form data
         return "add";
     }
 
-
+    @PostMapping("/add")
+    public String submitMenuItemForm(@ModelAttribute MenuItem menuItem, Model model) {
+        menuItemService.addMenuItem(menuItem);
+        return "redirect:/home";
+    }
 }
 
 

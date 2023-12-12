@@ -21,4 +21,9 @@ public class MenuItemService {
     public void deleteMenuItem(Integer id) {
         menuItemRepository.deleteById(id);
     }
+
+    public void addMenuItem(MenuItem menuItem) {
+        menuItemRepository.save(menuItem);
+    }
+
 }

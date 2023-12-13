@@ -7,10 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="container">
+<!-- Include Navbar -->
+<div th:replace="navbar :: sidebar"></div>
+<div class="pl-64 flex-grow">
     <h1 class="text-center text-3xl font-semibold text-[#07074D] mt-8 mb-2">Add New Item</h1>
     <div class="flex items-center justify-center p-12">
         <div class="mx-auto w-full max-w-[550px]">
-            <form  method="post" action="/add" enctype="multipart/form-data">
+            <form method="post" action="/add" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label
                             for="name"
@@ -34,7 +37,8 @@
                     >
                         Description
                     </label>
-                    <textarea name="description" id="description" cols="2" rows="2" placeholder="Item Description" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                    <textarea name="description" id="description" cols="2" rows="2" placeholder="Item Description"
+                              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                 </div>
                 <div class="mb-3">
                     <label
@@ -78,5 +82,7 @@
             </form>
         </div>
     </div>
+</div>
+
 </body>
 </html>

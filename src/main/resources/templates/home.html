@@ -15,34 +15,9 @@
 </head>
 <body class="bg-gray-100 d-flex">
 
-<!-- Sidebar -->
-<aside id="sidebar" class="fixed inset-y-0 left-0 z-10 w-64 px-4 py-6 bg-gray-800 border-r dark:border-gray-700 overflow-y-auto">
-    <!-- Logo and Restaurant Name -->
-    <div class="flex items-center space-x-2 mb-5">
-        <img th:src="@{/assets/logo.png}" alt="Global Taste of Toronto" class="h-16">
-        <span class="font-semibold text-lg text-white">Global Taste of Toronto</span>
-    </div>
-    <!-- Sidebar Navigation -->
-    <nav class="mt-6">
-        <a class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#">Home</a>
-        <a class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/add}">Add Item</a>
-        <!-- Additional links here -->
-    </nav>
-    <!-- User Section at the bottom -->
-    <div class="absolute bottom-2 mb-7">
-        <div class="px-3 py-2 text-sm font-semibold text-gray-300">
-    <span th:if="${session.isAdmin}">
-        Welcome, Admin!
-    </span>
-            <span th:if="${session.isUser}">
-        Welcome, User!
-    </span>
-        </div>
-        <a class="block pl-4 pr-36 py-2 text-sm font-semibold text-gray-300 rounded hover:bg-red-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/logout}">Logout</a>
-    </div>
-</aside>
+<!-- Include Navbar -->
+<div th:replace="navbar :: sidebar"></div>
 
-<!-- Rest of the page content should start with some left padding equal to the width of the sidebar (w-64 or 16rem) -->
 <div class="pl-64 flex-grow">
     <div class="container mt-5">
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -57,8 +32,7 @@
                             <strong>Price: </strong>$<span th:text="${item.price}"></span>
                         </p>
                         <!-- Buttons for admin users -->
-                        <!--th:if="${isAdmin}"-->
-                        <div class="mt-3 d-flex justify-content-end">
+                        <div th:if="${session.isAdmin}" class="mt-3 d-flex justify-content-end">
                             <a th:href="@{/edit/{id}(id=${item.id})}" class="btn btn-success btn-sm me-2">Update</a>
                             <form th:action="@{/delete-item/{id}(id=${item.id})}" method="post" style="display:inline;">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

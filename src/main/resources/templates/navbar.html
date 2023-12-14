@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside th:fragment="sidebar" id="sidebar" class="fixed inset-y-0 left-0 z-10 w-64 px-4 py-6 bg-gray-800 border-r dark:border-gray-700 overflow-y-auto">
+    <!-- Logo and Restaurant Name -->
+    <div class="flex items-center space-x-2 mb-5">
+        <img th:src="@{/assets/logo.png}" alt="Global Taste of Toronto" class="h-16">
+        <span class="font-semibold text-lg text-white">Global Taste of Toronto</span>
+    </div>
+    <!-- Sidebar Navigation -->
+    <nav class="mt-6">
+        <a class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/home}">Home</a>
+        <a th:if="${session.isAdmin}" class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/add}">Add Item</a>
+    </nav>
+    <!-- User Section at the bottom -->
+    <div class="absolute bottom-2 mb-7">
+        <div class="px-3 py-2 text-sm font-semibold text-gray-300">
+                <span th:if="${session.isAdmin}">
+                    Welcome, Admin!
+                </span>
+            <span th:if="${session.isUser}">
+                    Welcome, User!
+                </span>
+        </div>
+        <a class="block pl-4 pr-36 py-2 text-sm font-semibold text-gray-300 rounded hover:bg-red-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/logout}">Logout</a>
+    </div>
+</aside>
+</body>
+</html>

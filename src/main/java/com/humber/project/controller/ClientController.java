@@ -76,4 +76,10 @@ public class ClientController {
         usersService.saveUser(user);
         return "redirect:/register?success";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
 }

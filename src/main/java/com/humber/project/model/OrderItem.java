@@ -26,7 +26,6 @@ public class OrderItem {
     @Column(name = "item_price")
     private Double itemPrice;
 
-    // calculate item price
     public Double calculateItemPrice() {
         return this.menuItem.getPrice() * this.quantity;
     }

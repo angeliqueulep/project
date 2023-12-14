@@ -56,27 +56,22 @@ public class OrderController {
                     .findFirst();
 
             if (existingItem.isPresent()) {
-                // If item exists, increment its quantity
                 OrderItem orderItem = existingItem.get();
                 orderItem.setQuantity(orderItem.getQuantity() + 1);
             } else {
-                // If item doesn't exist, add it with a quantity of 1
                 OrderItem newOrderItem = new OrderItem();
                 newOrderItem.setMenuItem(menuItem);
                 newOrderItem.setQuantity(1);
-                newOrderItem.setItemPrice(menuItem.getPrice()); // Assuming a fixed price per item
+                newOrderItem.setItemPrice(menuItem.getPrice());
                 newOrderItem.setOrder(order);
                 order.getOrderItems().add(newOrderItem);
             }
 
-            // Update total price, if applicable
             order.setTotalPrice(order.calculateTotalPrice(order.getOrderItems()));
 
-            // Save the order to the database
-            orderService.saveOrder(order); // Assuming you have a method to save the order in your service
+            orderService.saveOrder(order);
         }
 
-        // return to previous source page
         String referer = request.getHeader("Referer");
         return referer != null ? "redirect:" + referer : "redirect:/order_page";
 
@@ -93,7 +88,6 @@ public class OrderController {
                     .findFirst();
 
             if (existingItem.isPresent()) {
-                // If item exists, decrement its quantity
                 OrderItem orderItem = existingItem.get();
                 orderItem.setQuantity(orderItem.getQuantity() - 1);
                 if (orderItem.getQuantity() == 0) {
@@ -101,14 +95,11 @@ public class OrderController {
                 }
             }
 
-            // Update total price, if applicable
             order.setTotalPrice(order.calculateTotalPrice(order.getOrderItems()));
 
-            // Save the order to the database
-            orderService.saveOrder(order); // Assuming you have a method to save the order in your service
+            orderService.saveOrder(order);
         }
 
-        // return to previous source page
         String referer = request.getHeader("Referer");
         return referer != null ? "redirect:" + referer : "redirect:/order_page";
 
@@ -183,9 +174,9 @@ public class OrderController {
 
     @GetMapping("/view_order/{id}")
     public String viewOrder(@PathVariable Integer id, Model model, HttpSession session) {
-//        if (!isAuthenticated(session)) {
-//            return "redirect:/homepage";
-//        }
+        if (!isAuthenticated(session)) {
+            return "redirect:/homepage";
+        }
         Order order = orderService.getOrderById(id);
         if (order == null) {
             return "redirect:/view_orders";

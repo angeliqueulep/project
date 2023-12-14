@@ -25,11 +25,9 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    // Relationship to OrderItem
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    // calculate total price
     public Double calculateTotalPrice(List<OrderItem> orderItems) {
         Double totalPrice = 0.0;
         for (OrderItem orderItem : orderItems) {

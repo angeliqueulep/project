@@ -32,7 +32,7 @@ public class MenuItemController {
     }
 
     @GetMapping("/home")
-    public String viewHomePage(Model model, HttpSession session) {
+    public String viewHome(Model model, HttpSession session) {
         if (!isAuthenticated(session)) {
             return "redirect:/";
         }

@@ -10,7 +10,8 @@
     <!-- Sidebar Navigation -->
     <nav class="mt-6">
         <a class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/home}">Home</a>
-        <a th:if="${session.isAdmin}" class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" href="#" th:href="@{/add}">Add Item</a>
+        <a th:if="${session.isAdmin}" class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300"  th:href="@{/add}">Add Item</a>
+        <a class="block px-3 py-2 mt-2 text-sm font-semibold text-gray-300 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300" th:href="@{/view_orders}">View Orders</a>
     </nav>
     <!-- User Section at the bottom -->
     <div class="absolute bottom-2 mb-7">

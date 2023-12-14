@@ -1,7 +1,9 @@
 package com.humber.project.controller;
 
+import com.humber.project.model.Order;
 import com.humber.project.model.Users;
 import com.humber.project.repository.UsersRepository;
+import com.humber.project.service.OrderService;
 import com.humber.project.service.UsersService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ClientController {
 
     private final UsersService usersService;
+    private final OrderService orderService;
 
-    public ClientController(UsersService usersService) {
+    public ClientController(UsersService usersService, OrderService orderService) {
         this.usersService = usersService;
+        this.orderService = orderService;
     }
 
     private boolean isAuthenticated(HttpSession session) {
@@ -32,7 +36,17 @@ public class ClientController {
             return "redirect:/home";
         }
 
-        return("index");
+        return "redirect:/homepage";
+    }
+
+    @GetMapping("/homepage")
+    public String homepage() {
+        return "homepage";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "index";
     }
 
     @Autowired

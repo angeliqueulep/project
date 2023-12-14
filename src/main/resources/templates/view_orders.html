@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<!-- Include Navbar -->
+<div th:replace="navbar :: sidebar"></div>
+<div class="pl-64 flex-grow">
+  <h1 class="text-3xl font-semibold text-[#07074D] mt-4">Orders</h1>
+  <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+    <table class="min-w-full leading-normal">
+      <thead>
+      <tr>
+        <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Order ID
+        </th>
+
+        <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Order Date
+        </th>
+        <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Total Price
+        </th>
+        <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Status
+        </th>
+        <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Actions
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr th:each="order : ${orders}">
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+            <div class="text-gray-900 whitespace-no-wrap" th:text="${order.id}"></div>
+          </td>
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+            <div class="text-gray-900 whitespace-no-wrap" th:text="${order.orderDate}"></div>
+          </td>
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+            <div class="text-gray-900 whitespace-no-wrap" th:text="${order.totalPrice}"></div>
+          </td>
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+            <div class="text-gray-900 whitespace-no-wrap" th:text="${order.status}"></div>
+          </td>
+          <td>
+              <a th:href="@{/view_order/{id}(id=${order.id})}" class="bg-purple-500 p-2 mr-2 text-white hover:underline">View Order</a>
+              <a th:href="@{/mark_as_processing/{id}(id=${order.id})}" class="bg-blue-500 p-2 mr-2 text-white hover:underline">Mark as Processing</a>
+              <a th:href="@{/mark_as_delivered/{id}(id=${order.id})}" class="bg-green-700 p-2 text-white hover:underline">Mark as Delivered</a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+  </div>
+</div>
+
+</body>
+</html>

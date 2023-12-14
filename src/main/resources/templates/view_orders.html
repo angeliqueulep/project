@@ -41,19 +41,19 @@
       </thead>
       <tbody>
         <tr th:each="order : ${orders}">
-          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm text-center">
             <div class="text-gray-900 whitespace-no-wrap" th:text="${order.id}"></div>
           </td>
-          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm text-center">
             <div class="text-gray-900 whitespace-no-wrap" th:text="${order.orderDate}"></div>
           </td>
-          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm text-center">
             <div class="text-gray-900 whitespace-no-wrap" th:text="${order.totalPrice}"></div>
           </td>
-          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+          <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm text-center">
             <div class="text-gray-900 whitespace-no-wrap" th:text="${order.status}"></div>
           </td>
-          <td>
+          <td class="flex justify-end mt-4">
               <a th:href="@{/view_order/{id}(id=${order.id})}" class="bg-purple-500 p-2 mr-2 text-white hover:underline">View Order</a>
               <a th:href="@{/mark_as_processing/{id}(id=${order.id})}" class="bg-blue-500 p-2 mr-2 text-white hover:underline">Mark as Processing</a>
               <a th:href="@{/mark_as_delivered/{id}(id=${order.id})}" class="bg-green-700 p-2 text-white hover:underline">Mark as Delivered</a>

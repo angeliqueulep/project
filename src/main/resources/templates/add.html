@@ -26,7 +26,10 @@
                             name="name"
                             id="name"
                             placeholder="Item Name"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md required"
+                            required
+                            pattern=".*\S.*"
+                            title="Please enter valid name not just spaces"
                     />
                 </div>
 
@@ -38,7 +41,10 @@
                         Description
                     </label>
                     <textarea name="description" id="description" cols="2" rows="2" placeholder="Item Description"
-                              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                              required
+                              title="Please enter valid description not just spaces"
+                    ></textarea>
                 </div>
                 <div class="mb-3">
                     <label
@@ -53,7 +59,7 @@
                             id="price"
                             min="0"
                             step="0.01"
-                            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required
                     />
                 </div>
                 <div class="mb-3">
@@ -69,6 +75,9 @@
                             id="imageUrl"
                             placeholder="Item Image URL"
                             class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required
+                            pattern=".*\S.*"
+                            title="Please enter valid image url not just spaces"
                     />
                 </div>
 

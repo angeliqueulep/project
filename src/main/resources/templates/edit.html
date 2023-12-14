@@ -9,86 +9,86 @@
 <body class="container">
 <!-- Include Navbar -->
 <div th:replace="navbar :: sidebar"></div>
-    <div class="pl-64 flex-grow">
-        <h1 class="text-center text-3xl font-semibold text-[#07074D] mt-8 mb-2">Edit Menu Item</h1>
-        <div class="flex items-center justify-center p-12">
-            <div class="mx-auto w-full max-w-[550px]">
-                <form method="post" action="/edit" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label
-                                for="name"
-                                class="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Item Name
-                        </label>
-                        <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                th:value="${menuItem.name}"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
+<div class="pl-64 flex-grow">
+    <h1 class="text-center text-3xl font-semibold text-[#07074D] mt-8 mb-2">Edit Menu Item</h1>
+    <div class="flex items-center justify-center p-12">
+        <div class="mx-auto w-full max-w-[550px]">
+            <form method="post" action="/edit" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label
+                            for="name"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                        Item Name
+                    </label>
+                    <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            th:value="${menuItem.name}"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    />
+                </div>
 
-                    <div class="mb-3">
-                        <label
-                                for="description"
-                                class="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Description
-                        </label>
-                        <textarea
-                                name="description"
-                                id="description"
-                                cols="2"
-                                rows="2"
-                                th:text="${menuItem.description}"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label
-                                for="price"
-                                class="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Item Price
-                        </label>
-                        <input
-                                type="number"
-                                name="price"
-                                id="price"
-                                th:value="${menuItem.price}"
-                                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label
-                                for="imageUrl"
-                                class="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Item Image URL
-                        </label>
-                        <input
-                                type="text"
-                                name="imageUrl"
-                                id="imageUrl"
-                                step=".01"
-                                th:value="${menuItem.imageUrl}"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-                    <input type="hidden" name="id" th:value="${menuItem.id}">
-                    <div>
-                        <button
-                                type="submit"
-                                class="w-full py-3 mt-4 bg-purple-700 rounded-md text-base font-medium text-white outline-none focus:shadow-outline hover:bg-[#7C79F2] transition-colors duration-300"
-                        >
-                            Edit Item
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div class="mb-3">
+                    <label
+                            for="description"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                        Description
+                    </label>
+                    <textarea
+                            name="description"
+                            id="description"
+                            cols="2"
+                            rows="2"
+                            th:text="${menuItem.description}"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label
+                            for="price"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                        Item Price
+                    </label>
+                    <input
+                            type="number"
+                            name="price"
+                            id="price"
+                            step="0.01"
+                            th:value="${menuItem.price}"
+                            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label
+                            for="imageUrl"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                        Item Image URL
+                    </label>
+                    <input
+                            type="text"
+                            name="imageUrl"
+                            id="imageUrl"
+                            th:value="${menuItem.imageUrl}"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    />
+                </div>
+                <input type="hidden" name="id" th:value="${menuItem.id}">
+                <div>
+                    <button
+                            type="submit"
+                            class="w-full py-3 mt-4 bg-purple-700 rounded-md text-base font-medium text-white outline-none focus:shadow-outline hover:bg-[#7C79F2] transition-colors duration-300"
+                    >
+                        Edit Item
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 
 </body>

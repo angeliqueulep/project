@@ -22,8 +22,16 @@ public class ClientController {
         this.usersService = usersService;
     }
 
+    private boolean isAuthenticated(HttpSession session) {
+        return session.getAttribute("isAdmin") != null || session.getAttribute("isUser") != null;
+    }
+
     @GetMapping("/")
-    public String index(){
+    public String index(Model model, HttpSession session) {
+        if (isAuthenticated(session)) {
+            return "redirect:/home";
+        }
+
         return("index");
     }
 

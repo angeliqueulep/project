@@ -27,6 +27,9 @@
                             id="name"
                             th:value="${menuItem.name}"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required
+                            pattern=".*\S.*"
+                            title="Please enter valid name not just spaces"
                     />
                 </div>
 
@@ -59,6 +62,7 @@
                             step="0.01"
                             th:value="${menuItem.price}"
                             class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required
                     />
                 </div>
                 <div class="mb-3">
@@ -74,6 +78,9 @@
                             id="imageUrl"
                             th:value="${menuItem.imageUrl}"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required
+                            pattern=".*\S.*"
+                            title="Please enter valid image URL not just spaces"
                     />
                 </div>
                 <input type="hidden" name="id" th:value="${menuItem.id}">

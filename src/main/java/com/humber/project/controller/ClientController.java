@@ -1,6 +1,5 @@
 package com.humber.project.controller;
 
-import com.humber.project.model.Order;
 import com.humber.project.model.Users;
 import com.humber.project.repository.UsersRepository;
 import com.humber.project.service.OrderService;
@@ -67,8 +66,7 @@ public class ClientController {
 
             return "redirect:/home";
         } else {
-            //redirectAttrs.addFlashAttribute("error", "Invalid login credentials. Please try again");
-            return "redirect:/?failed";
+            return "redirect:/login?failed";
         }
     }
     @GetMapping("/register")

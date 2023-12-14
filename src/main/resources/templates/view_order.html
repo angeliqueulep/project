@@ -43,13 +43,13 @@
           </thead>
           <tbody>
               <tr th:each="item : ${order.orderItems}">
-              <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+              <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">
                   <div class="text-gray-900 whitespace-no-wrap" th:text="${item.menuItem.name}"></div>
               </td>
-              <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+              <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">
                   <div class="text-gray-900 whitespace-no-wrap" th:text="${item.quantity}"></div>
               </td>
-              <td class="px-4 py-4 border-b border-gray-200 bg-white text-sm">
+              <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">
                   <div class="text-gray-900 whitespace-no-wrap" th:text="${item.calculateItemPrice()}"></div>
               </td>
               </tr>
